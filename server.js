@@ -34,7 +34,7 @@ const axios = require('axios');
 //   });
 // })
 
-connectdb("mongodb+srv://Gayathri:dooobdvBpLSLjw5w@cluster0.kucbd.mongodb.net/Project?retryWrites=true&w=majority&appName=Cluster0").then(() => {
+connectdb(process.env.mongourl).then(() => {
   console.log("mongodb connected");
   app.listen(5000, () => {
     console.log('server listening on port 5000');
