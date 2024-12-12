@@ -5,7 +5,7 @@ async function restrictToLoggedinUserOnly(req, res, next) {
   // console.log("userid"+userUid);
   if (!userUid) return res.redirect("/login");
   const user = getUser(userUid);
-  console.log("in log user"+user);
+  console.log("in log user" + user);
   if (!user) return res.redirect("/login");
   req.user = user;
   next();
@@ -17,12 +17,13 @@ async function checkAuth(req, res, next) {
   next();
 }
 
-function restrictto(roles=[]){
-  return function(req,res,next){
-    if(!req.user) 
+function restrictto(roles = []) {
+  return function (req, res, next) {
+
+    if (!req.user)
       return res.redirect("/login");
 
-    if(!roles.includes(req.user.role))
+    if (!roles.includes(req.user.role))
       return res.end("UnAuthorized");
     return next();
   }
@@ -30,5 +31,5 @@ function restrictto(roles=[]){
 module.exports = {
   restrictToLoggedinUserOnly,
   checkAuth,
-  restrictto,
+  restrictto
 };
