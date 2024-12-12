@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="newstyle.css">
     <link rel="icon" type="image/jpg" href="images/Life.jpg">
-    <!-- AOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <!-- bootstrap -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- bootstrap -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  
+
 </head>
 
 <body>
@@ -54,22 +56,22 @@
                         <div class="user-icon">
                             <a id="icon"><i class="bi bi-person-circle"></i></a>
                             <div class="user-menu">
-                                <% if (user) { %>
-                                    <!-- Show these options if the user is logged in -->
-                                    <a href="/history">History</a>
-                                    <a href="/logout">Logout</a>
-                                    <% } else { %>
-                                        <!-- Show these options if the user is not logged in -->
-                                        <a href="/signup">Sign Up</a>
-                                        <a href="/login">Login</a>
-                                        <% } %>
+                              <% if (user) { %>
+                                <!-- Show these options if the user is logged in -->
+                                <a href="/history">History</a>
+                                <a href="/logout">Logout</a>
+                              <% } else { %>
+                                <!-- Show these options if the user is not logged in -->
+                                <a href="/signup">Sign Up</a>
+                                <a href="/login">Login</a>
+                              <% } %>
                             </div>
-
-
-
-
-                        </div>
+                          
+                            
+                        
+                          
                 </div>
+            </div>
 
         </header>
 
@@ -192,7 +194,7 @@
             </div>
         </section>
     </div>
-
+    
     <!-- Footer -->
     <footer class="footer bg-dark text-white text-center py-3">
         <p>&copy; 2024 PlantPulse</p>
@@ -201,46 +203,46 @@
         // Check if a success parameter is present in the URL
         const urlParams = new URLSearchParams(window.location.search);
         const feedbackSuccess = urlParams.get('feedbackSuccess');
-
+    
         if (feedbackSuccess === 'true') {
             alert('Thank you for your feedback! It has been successfully submitted.');
             // Clear the feedbackSuccess parameter from the URL
-            const newUrl = window.location.pathname; // Keeps only the path
-            window.history.replaceState(null, '', newUrl);
+        const newUrl = window.location.pathname; // Keeps only the path
+        window.history.replaceState(null, '', newUrl);
         } else if (feedbackSuccess === 'false') {
             alert('There was an error submitting your feedback. Please try again later.');
             // Clear the feedbackSuccess parameter from the URL
-            const newUrl = window.location.pathname; // Keeps only the path
-            window.history.replaceState(null, '', newUrl);
+        const newUrl = window.location.pathname; // Keeps only the path
+        window.history.replaceState(null, '', newUrl);
         }
     </script>
-
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const userIcon = document.getElementById("icon");
-            const userMenu = document.querySelector(".user-menu");
+    const userIcon = document.getElementById("icon");
+    const userMenu = document.querySelector(".user-menu");
 
-            userIcon.addEventListener("click", function (event) {
-                // Toggle the visibility of the user menu
-                userMenu.classList.toggle("show");
+    userIcon.addEventListener("click", function (event) {
+        // Toggle the visibility of the user menu
+        userMenu.classList.toggle("show");
 
-                // Prevent the click from propagating to the document
-                event.stopPropagation();
-            });
+        // Prevent the click from propagating to the document
+        event.stopPropagation();
+    });
 
-            // Close the user menu when clicking anywhere outside
-            document.addEventListener("click", function () {
-                if (userMenu.classList.contains("show")) {
-                    userMenu.classList.remove("show");
-                }
-            });
-        });
-        document.addEventListener("DOMContentLoaded", function () {
-            AOS.init();
-        });
-        document.addEventListener("DOMContentLoaded", function () {
-            gsap.from(".info", { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
-        });
+    // Close the user menu when clicking anywhere outside
+    document.addEventListener("click", function () {
+        if (userMenu.classList.contains("show")) {
+            userMenu.classList.remove("show");
+        }
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    AOS.init();
+});
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.from(".info", { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
+});
 
 
 

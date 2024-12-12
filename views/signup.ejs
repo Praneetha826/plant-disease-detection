@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlantPulse | Signup</title>
   <link rel="stylesheet" href="style.css">
+
   <link rel="stylesheet" href="newstyle.css">
   <link rel="icon" type="image/jpg" href="images/Life.jpg">
   <link rel="stylesheet" href="style-signup.css">
   <link rel="icon" type="image/jpg" href="./images/Life.jpg">
-  <!-- AOS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
@@ -19,10 +19,11 @@
   <!-- bootstrap -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  
+
 </head>
 
 <body>
-  <!-- SignUp - Page -->
   <div class="container">
     <div class="form">
       <h1 class="login">Sign Up</h1>
@@ -41,12 +42,10 @@
         </div>
         <button class="submit-btn" type="submit">Sign Up</button>
         <div class="divider"><span>Or</span></div>
-        <button class="google-btn" type="button"><i class="bi bi-google"></i> <a
-            href="http://localhost:5000/auth/google"> Sign Up with Google</a></button>
+        <button class="google-btn" type="button"><i class="bi bi-google"></i> <a href="http://localhost:5000/auth/google"> Sign Up with Google</a></button>
       </form>
     </div>
   </div>
-
   <script>
     function validateEmail() {
       const emailInput = document.getElementById("email").value;
@@ -57,38 +56,37 @@
       }
       return true; // Allow form submission
     }
-  </script>
-
-  <script>
+    // 
     document.addEventListener("DOMContentLoaded", function () {
-      const userIcon = document.getElementById("icon");
-      const userMenu = document.querySelector(".user-menu");
+    const userIcon = document.getElementById("icon");
+    const userMenu = document.querySelector(".user-menu");
 
-      userIcon.addEventListener("click", function (event) {
+    userIcon.addEventListener("click", function (event) {
         // Toggle the visibility of the user menu
         userMenu.classList.toggle("show");
 
         // Prevent the click from propagating to the document
         event.stopPropagation();
-      });
+    });
 
-      // Close the user menu when clicking anywhere outside
-      document.addEventListener("click", function () {
+    // Close the user menu when clicking anywhere outside
+    document.addEventListener("click", function () {
         if (userMenu.classList.contains("show")) {
-          userMenu.classList.remove("show");
+            userMenu.classList.remove("show");
         }
-      });
     });
-    document.addEventListener("DOMContentLoaded", function () {
-      AOS.init();
-    });
-    document.addEventListener("DOMContentLoaded", function () {
-      gsap.from(".info", { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
-    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    AOS.init();
+});
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.from(".info", { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
+});
 
 
 
   </script>
+  
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 const express = require("express");
-// const URL = require("../models/url");
+const { restrictto,checkAuth } = require("../middleware/auth");
+const uploads = require("../models/upload");
 
 const router = express.Router();
 
@@ -26,6 +27,12 @@ router.get('/upload',(req,res)=>{
 
 router.get('/history',(req,res)=>{
   res.render('history');
+})
+
+
+router.get('/admin/history',restrictto(["admin"]),async (req,res)=>{
+    const histories= await uploads.find().lean();
+    res.json({data:histories});
 })
 
 module.exports=router;

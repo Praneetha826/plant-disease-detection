@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="newstyle.css">
     <link rel="icon" type="image/jpg" href="images/Life.jpg">
-    <!-- AOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <!-- bootstrap -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  
     <style>
         #diagnostic {
             padding: 18px 20px;
@@ -75,14 +74,14 @@
         const form = document.getElementById('diagnoseForm');
         const imageInput = document.getElementById('imageInput');
         const resultDiv = document.getElementById('result');
-        const warningDiv = document.getElementById('warning');
+        const warningDiv = document.getElementById('warning'); 
 
         form.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent the form from submitting normally
 
             const formData = new FormData(form);
             formData.append('image', imageInput.files[0]);
-            console.log(formData.get('image'));
+            console.log(formData.get('image')); 
 
             try {
                 const response = await fetch('/upload', {
@@ -92,40 +91,42 @@
                 console.log(response);
                 if (response.ok) {
                     const data = await response.json();
-                    const { label, score, diseaseDetails, warning } = data;
+                    const { label, score, diseaseDetails,warning } = data;
                     const { description, possibleSteps, imageUrl, supplements } = diseaseDetails;
 
-                    if (warning.length > 0) {
-                        warningDiv.innerHTML = warning.map(w => `<p class="text-warning">${w}</p>`).join('');
-                    } else {
-                        warningDiv.innerHTML = '<p>No warnings.</p>';
-                    }
+                if (warning.length > 0) {
+                warningDiv.innerHTML = warning.map(w => `<p class="text-warning">${w}</p>`).join('');
+                } else {
+                warningDiv.innerHTML = '<p>No warnings.</p>';
+                }
 
                     // Display the prediction and disease details
                     resultDiv.innerHTML = `
                         <h3>Diagnosis Result</h3><br>
                         <p><strong>Disease:</strong> ${label}</p><br>
                         <p><strong>Confidence:</strong> ${(score * 100).toFixed(2)}%</p><br>
-                        <p><strong>Description:</strong> ${description || 'No description available.'}</p>
-                        <p><strong>Possible Steps:</strong> ${possibleSteps || 'No steps provided.'}</p>
-                        <img src="${imageUrl}" alt="${label}" style="max-width: 100%; margin-top: 10px;" onerror="this.style.display='none';">
+                        <p><strong>Description:</strong> ${description || 'No description available.'}</p><br>
+                        <p><strong>Possible Steps:</strong> ${possibleSteps || 'No steps provided.'}</p><br>
+                        <img src="${imageUrl}" alt="${label}" style="max-width: 50%; margin-top: 10px;" onerror="this.style.display='none';">
+                        
                         
                         <h4>Supplements</h4>
                         <ul>
-                            ${(supplements && supplements.length > 0)
-                            ? supplements.map(supp => `
+                            ${
+                              (supplements && supplements.length > 0)
+                                ? supplements.map(supp => `
                                     <li>
                                         <strong>${supp.name}</strong><br>
                                         <img src="${supp.image}" alt="${supp.name}" style="max-width: 100px;" onerror="this.style.display='none';"><br>
                                         <a href="${supp.buyLink}" target="_blank">Buy Now</a>
                                     </li>
                                   `).join('')
-                            : '<p>No supplements available for this disease.</p>'
-                        }
+                                : '<p>No supplements available for this disease.</p>'
+                            }
                         </ul>
                     `;
                 } else {
-                    const errortext = await response.text();
+                    const errortext= await response.text();
                     resultDiv.innerHTML = `<p class="text-danger">${errortext}</p>`;
                 }
             } catch (error) {
@@ -134,37 +135,36 @@
             }
         });
     </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const userIcon = document.getElementById("icon");
-            const userMenu = document.querySelector(".user-menu");
-
-            userIcon.addEventListener("click", function (event) {
-                // Toggle the visibility of the user menu
-                userMenu.classList.toggle("show");
-
-                // Prevent the click from propagating to the document
-                event.stopPropagation();
-            });
-
-            // Close the user menu when clicking anywhere outside
-            document.addEventListener("click", function () {
-                if (userMenu.classList.contains("show")) {
-                    userMenu.classList.remove("show");
-                }
-            });
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        const userIcon = document.getElementById("icon");
+        const userMenu = document.querySelector(".user-menu");
+    
+        userIcon.addEventListener("click", function (event) {
+            // Toggle the visibility of the user menu
+            userMenu.classList.toggle("show");
+    
+            // Prevent the click from propagating to the document
+            event.stopPropagation();
         });
-        document.addEventListener("DOMContentLoaded", function () {
-            AOS.init();
+    
+        // Close the user menu when clicking anywhere outside
+        document.addEventListener("click", function () {
+            if (userMenu.classList.contains("show")) {
+                userMenu.classList.remove("show");
+            }
         });
-        document.addEventListener("DOMContentLoaded", function () {
-            gsap.from(".info", { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
-        });
-
-
-
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        AOS.init();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        gsap.from(".info", { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
+    });
+    
+    
     </script>
+   
+
 </body>
 
 </html>

@@ -10,20 +10,10 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/jpg" href="images/Life.jpg">
   <link rel="stylesheet" href="newstyle.css">
-  <!--  -->
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <!-- bootstrap -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="history-style.css">
 </head>
 
 <body>
-  <!-- History -->
   <div class="container" id="history-container" data-aos="zoom-in">
     <section id="history" class="section">
       <div class="content">
@@ -37,7 +27,6 @@
       </div>
     </section>
   </div>
-
   <script>
     async function fetchHistory() {
       const historyList = document.getElementById('historyList');
@@ -83,8 +72,7 @@
     document.addEventListener('DOMContentLoaded', fetchHistory);
   </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
+  <script>document.addEventListener("DOMContentLoaded", function () {
       const userIcon = document.getElementById("icon");
       const userMenu = document.querySelector(".user-menu");
 

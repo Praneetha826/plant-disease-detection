@@ -213,7 +213,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 // Hugging Face API details
 const hfToken = process.env.hftoken;
 const plantValidationModelUrl = process.env.planturl;
-const diseaseDiagnosisModelUrl = process.env.modelurl;
+const diseaseDiagnosisModelUrl = process.env.modelurl ;
 
 
 
@@ -332,31 +332,6 @@ router.post('/', async (req, res) => {
       console.error('Validation model response:', validationResponse);
       return res.status(400).send('Please upload an image of leaf');
     }
-      // const newUpload = new Upload({
-      //   userId: req.user._id, 
-      //   imagePath: `/uploads/${imageFile.name}`, // Relative path to access the uploaded file
-      //   diseaseLabel: prediction.label,
-      //   confidence: prediction.score,
-      // });
-      // await newUpload.save();
-
-      // const userId = new Types.ObjectId(req.user._id);
-      // const uploads = await Upload.find({ userId }).sort({ createdAt: -1 });
-      // const diseaseCounts = await Upload.aggregate([
-      //     { $match: { userId } }, 
-      //     { $group: { _id: "$diseaseLabel", count: { $sum: 1 } } }, 
-      //     { $sort: { count: -1 } } // Sort by count in descending order
-      // ]);
-      // console.log(diseaseCounts);
-      // const warning = diseaseCounts.filter(disease => disease.count >= 3)
-      //       .map(disease => `Warning: The disease "${disease._id}" has occurred ${disease.count} times.`);
-
-      // res.json({
-      //   label: prediction.label,
-      //   score: prediction.score,
-      //   diseaseDetails,
-      //   warning,
-      // });
   } catch (err) {
     console.error('Error handling file upload:', err);
     res.status(500).send('Failed to process the image.');
